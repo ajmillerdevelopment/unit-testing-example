@@ -1,5 +1,6 @@
 import { makeObservable, observable, action } from "mobx";
 import someOtherVm from "./someOtherVm";
+import cowAPI from "./api";
 class vm {
     constructor() {
         makeObservable(this, {
@@ -7,6 +8,8 @@ class vm {
             countCow: action,
         });
     }
+
+    cowApi = new cowAPI();
 
     cowsCounted = 0;
 
@@ -23,6 +26,16 @@ class vm {
         } else {
             document.getElementById("title").classList.remove("red");
         }
+    }
+
+    callApi() {
+        this.cowAPI.getUnits().then((data) => {
+            this.nextFunc(data);
+        });
+    }
+
+    nextFunc(data) {
+        console.log(data);
     }
 }
 export default new vm();
