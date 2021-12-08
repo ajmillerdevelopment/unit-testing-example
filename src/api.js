@@ -7,4 +7,4 @@ class cowAPI {
             });
     }
 }
-export default cowAPI;
+export default new cowAPI();

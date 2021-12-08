@@ -9,13 +9,11 @@ class vm {
         });
     }
 
-    cowApi = new cowAPI();
-
     cowsCounted = 0;
 
     countCow() {
         this.cowsCounted += 1;
-        this.checkCowCount();
+        // this.checkCowCount();
         someOtherVm.isEven(this.cowsCounted);
     }
 
@@ -29,7 +27,7 @@ class vm {
     }
 
     callApi() {
-        this.cowAPI.getUnits().then((data) => {
+        cowAPI.getUnits().then((data) => {
             this.nextFunc(data);
         });
     }
